@@ -26,15 +26,5 @@ namespace movies.Controllers
 
             return Ok(movies);
         }
-
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Movie>> GetMovie(int id)
-        {
-            var movie = await _context.Movies.SingleOrDefaultAsync(x => x.Id == id);
-
-            if(movie == null) return NoContent();
-
-            return Ok(movie);
-        }
     }
 }
