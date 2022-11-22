@@ -72,7 +72,7 @@ namespace movies.Data
 
             var movies = new List<Movie>()
             {
-                new Movie{Title="The Godfather",Budget=6000000,Homepage="Cinematographer Gordon Willis earned himself the nickname \"The Prince of Darkness,\" since his sets were so underlit. \"Paramount Pictures\" executives initially",Overview="The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.", Popularity=58,ReleaseDate="24/03/1972",Revenue=520341816,Runtime=175,Status="Released",Tagline="The Godfather \"Don\" Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding.",VoteAverage=9.2,VoteCount=180000000},
+                new Movie{Title="The Godfather",Budget=6000000,Homepage="Cinematographer Gordon Willis earned himself the nickname The Prince of Darkness, since his sets were so underlit. Paramount Pictures executives initially",Overview="The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.", Popularity=58,ReleaseDate="24/03/1972",Revenue=520341816,Runtime=175,Status="Released",Tagline="The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding.",VoteAverage=9.2,VoteCount=180000000},
             };
 
             var movieCast = new List<MovieCast>()

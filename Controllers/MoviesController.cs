@@ -18,27 +18,35 @@ namespace movies.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
+        public async Task<ActionResult<JsonArray>> GetMovies()
         {
             var movies = await _context.Movies.ToListAsync();
 
-            if (movies == null) return NoContent();
+            var jsonArray = new JsonArray()
+            {
+                Movies = movies,
+            };
 
-            return Ok(movies);
+            return Ok(jsonArray);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<Json>> GetMovie(int id)
+        public async Task<ActionResult<JsonObject>> GetMovie(int id)
         {
             var movie = await _context.Movies.SingleOrDefaultAsync(x => x.Id == id);
 
-            var json = new Json() { Movie = movie };
+            var json = new JsonObject() { Movie = movie };
 
             return Ok(json);
         }
     }
 
-    public class Json
+    public class JsonArray
+    {
+        public IEnumerable<Movie> Movies { get; set; }
+    }
+
+    public class JsonObject
     {
         public Movie Movie { get; set; }
     }
