@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using movies.Data;
+using movies.Entities;
 
 namespace movies.Controllers
 {
