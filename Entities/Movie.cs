@@ -15,5 +15,6 @@
         public string Tagline { get; set; }
         public double VoteAverage { get; set; }
         public int VoteCount { get; set; }
+        public string PhotoUrl { get; set; }
     }
 }

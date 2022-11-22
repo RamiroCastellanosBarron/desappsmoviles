@@ -11,14 +11,15 @@ using movies.Data;
 namespace movies.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221122084843_InitialCreate")]
+    [Migration("20221122182219_InitialCreate")]
     partial class InitialCreate
     {
+        /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "6.0.7")
+                .HasAnnotation("ProductVersion", "7.0.0")
                 .HasAnnotation("Relational:MaxIdentifierLength", 63);
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
@@ -205,6 +206,9 @@ namespace movies.Migrations
                     b.Property<string>("Overview")
                         .HasColumnType("text");
 
+                    b.Property<string>("PhotoUrl")
+                        .HasColumnType("text");
+
                     b.Property<double>("Popularity")
                         .HasColumnType("double precision");
 
@@ -377,6 +381,9 @@ namespace movies.Migrations
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Name")
+                        .HasColumnType("text");
+
+                    b.Property<string>("PhotoUrl")
                         .HasColumnType("text");
 
                     b.HasKey("Id");

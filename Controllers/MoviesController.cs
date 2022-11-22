@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Internal;
 using movies.Data;
 using movies.Entities;
 
@@ -20,7 +21,8 @@ namespace movies.Controllers
         [HttpGet]
         public async Task<ActionResult<JsonArray>> GetMovies()
         {
-            var movies = await _context.Movies.ToListAsync();
+            var movies = await _context.Movies
+                .ToListAsync();
 
             var jsonArray = new JsonArray()
             {

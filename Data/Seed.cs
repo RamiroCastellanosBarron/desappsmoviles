@@ -16,25 +16,25 @@ namespace movies.Data
             var persons = new List<Person>()
             {
                 // The Godfather
-                new Person{Name="Marlon Brando" },
-                new Person{Name="Al Pacino" },
-                new Person{Name="James Caan" },
-                new Person{Name="Diane Keaton" },
-                new Person{Name="Robert Duvall" },
-                new Person{Name="Francis Ford Coppola" },
-                new Person{Name="Mario Puzo" },
-                new Person{Name="Gordon Willis" },
-                new Person{Name="Aram Avakian" },
+                new Person{Name="Marlon Brando",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Al Pacino",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="James Caan",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Diane Keaton",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Robert Duvall",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Francis Ford Coppola",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Mario Puzo",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Gordon Willis",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
+                new Person{Name="Aram Avakian",PhotoUrl="https://media.gq.com.mx/photos/6245b67deaa378c48316e90d/1:1/w_1693,h_1693,c_limit/michael%20corleone%20traje%20rayas.jpg" },
 
                 // Iron Man
-                new Person{Name="Robert Downey Jr." },
-                new Person{Name="Gwyneth Paltrow" },
-                new Person{Name="Terrence Howard" },
-                new Person{Name="Jeff Bridges" },
-                new Person{Name="Leslie Bibb" },
-                new Person{Name="Shaun Toub" },
-                new Person{Name="Jon Favreau" },
-                new Person{Name="Mark Fergus" },
+                new Person{Name="Robert Downey Jr.", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Gwyneth Paltrow", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Terrence Howard", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Jeff Bridges", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Leslie Bibb", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Shaun Toub", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Jon Favreau", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
+                new Person{Name="Mark Fergus", PhotoUrl="https://legendary-digital-network-assets.s3.amazonaws.com/wp-content/uploads/2020/05/13041706/maxresdefault-1-1.jpg" },
             };
 
             var departments = new List<Department>()
@@ -84,9 +84,9 @@ namespace movies.Data
 
             var movies = new List<Movie>()
             {
-                new Movie{Title="The Godfather",Budget=6000000,Homepage="Cinematographer Gordon Willis earned himself the nickname The Prince of Darkness, since his sets were so underlit. Paramount Pictures executives initially",Overview="The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.", Popularity=58,ReleaseDate="24/03/1972",Revenue=520341816,Runtime=175,Status="Released",Tagline="The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding.",VoteAverage=9.2,VoteCount=180000000},
+                new Movie{Title="The Godfather",Budget=6000000,Homepage="Cinematographer Gordon Willis earned himself the nickname The Prince of Darkness, since his sets were so underlit. Paramount Pictures executives initially",Overview="The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.", Popularity=58,ReleaseDate="24/03/1972",Revenue=520341816,Runtime=175,Status="Released",Tagline="The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding.",VoteAverage=9.2,VoteCount=180000000, PhotoUrl="https://m.media-amazon.com/images/M/MV5BM2MyNjYxNmUtYTAwNi00MTYxLWJmNWYtYzZlODY3ZTk3OTFlXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_.jpg"},
 
-                new Movie{Title="Iron Man",Budget=140000000,Homepage="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",Overview="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.", Popularity=371,ReleaseDate="02/05/2008",Revenue=585796247,Runtime=126,Status="Released",Tagline="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",VoteAverage=7.9,VoteCount=1100000000},
+                new Movie{Title="Iron Man",Budget=140000000,Homepage="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",Overview="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.", Popularity=371,ReleaseDate="02/05/2008",Revenue=585796247,Runtime=126,Status="Released",Tagline="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",VoteAverage=7.9,VoteCount=1100000000, PhotoUrl="https://practicaltyping.com/wp-content/uploads/2021/03/ironman.jpg"},
 
 
             };
