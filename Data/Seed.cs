@@ -15,6 +15,7 @@ namespace movies.Data
 
             var persons = new List<Person>()
             {
+                // The Godfather
                 new Person{Name="Marlon Brando" },
                 new Person{Name="Al Pacino" },
                 new Person{Name="James Caan" },
@@ -24,6 +25,16 @@ namespace movies.Data
                 new Person{Name="Mario Puzo" },
                 new Person{Name="Gordon Willis" },
                 new Person{Name="Aram Avakian" },
+
+                // Iron Man
+                new Person{Name="Robert Downey Jr." },
+                new Person{Name="Gwyneth Paltrow" },
+                new Person{Name="Terrence Howard" },
+                new Person{Name="Jeff Bridges" },
+                new Person{Name="Leslie Bibb" },
+                new Person{Name="Shaun Toub" },
+                new Person{Name="Jon Favreau" },
+                new Person{Name="Mark Fergus" },
             };
 
             var departments = new List<Department>()
@@ -42,6 +53,7 @@ namespace movies.Data
                 new Company{Name="Warner Bros."},
                 new Company{Name="Walt Disney Pictures"},
                 new Company{Name="Columbia"},
+                new Company{Name="Marvel Studios"},
             };
 
             var countries = new List<Country>()
@@ -73,64 +85,123 @@ namespace movies.Data
             var movies = new List<Movie>()
             {
                 new Movie{Title="The Godfather",Budget=6000000,Homepage="Cinematographer Gordon Willis earned himself the nickname The Prince of Darkness, since his sets were so underlit. Paramount Pictures executives initially",Overview="The aging patriarch of an organized crime dynasty in postwar New York City transfers control of his clandestine empire to his reluctant youngest son.", Popularity=58,ReleaseDate="24/03/1972",Revenue=520341816,Runtime=175,Status="Released",Tagline="The Godfather Don Vito Corleone is the head of the Corleone mafia family in New York. He is at the event of his daughters wedding.",VoteAverage=9.2,VoteCount=180000000},
+
+                new Movie{Title="Iron Man",Budget=140000000,Homepage="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",Overview="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.", Popularity=371,ReleaseDate="02/05/2008",Revenue=585796247,Runtime=126,Status="Released",Tagline="After being held captive in an Afghan cave, billionaire engineer Tony Stark creates a unique weaponized suit of armor to fight evil.",VoteAverage=7.9,VoteCount=1100000000},
+
+
             };
 
             var movieCast = new List<MovieCast>()
             { 
+                // The Godfather
                 new MovieCast{MovieId=1,GenderId=1,PersonId=1,CharacterName="Don Vito Corleone",CastOrder=1 },
                 new MovieCast{MovieId=1,GenderId=1,PersonId=2,CharacterName="Michael Corleone",CastOrder=2 },
                 new MovieCast{MovieId=1,GenderId=1,PersonId=3,CharacterName="Sonny Corleone",CastOrder=3 },
                 new MovieCast{MovieId=1,GenderId=2,PersonId=4,CharacterName="Diane Keaton",CastOrder=4 },
                 new MovieCast{MovieId=1,GenderId=1,PersonId=5,CharacterName="Robert Duvall",CastOrder=5 },
+
+                // Iron Man
+                new MovieCast{MovieId=2,GenderId=1,PersonId=10,CharacterName="Tony Stark",CastOrder=1 },
+                new MovieCast{MovieId=2,GenderId=2,PersonId=11,CharacterName="Pepper Potts",CastOrder=2 },
+                new MovieCast{MovieId=2,GenderId=1,PersonId=12,CharacterName="Rhodey",CastOrder=3 },
+                new MovieCast{MovieId=2,GenderId=1,PersonId=13,CharacterName="Obadiah Stane",CastOrder=4 },
+                new MovieCast{MovieId=2,GenderId=2,PersonId=14,CharacterName="Christine Everhart",CastOrder=5 },
+                new MovieCast{MovieId=2,GenderId=1,PersonId=15,CharacterName="Yinsen",CastOrder=6 },
+
             };
 
             var crews = new List<Crew>()
             {
+                // The Godfather
                 new Crew{PersonId=6,MovieId=1,DepartmentId=3,Job="Director" },
                 new Crew{PersonId=8,MovieId=1,DepartmentId=1,Job="Cinematographer" },
                 new Crew{PersonId=7,MovieId=1,DepartmentId=4,Job="Writer" },
                 new Crew{PersonId=9,MovieId=1,DepartmentId=2,Job="Editor" },
+
+                // Iron Man
+                new Crew{PersonId=16,MovieId=2,DepartmentId=3,Job="Director" },
+                new Crew{PersonId=17,MovieId=2,DepartmentId=4,Job="Writer" },
+
+
             };
 
             var movieCompanies = new List<MovieCompany>()
             {
+                // The Godfather
                 new MovieCompany{MovieId=1,CompanyId=1},
+
+                // Iron Man
+                new MovieCompany{MovieId=2,CompanyId=6},
             };
 
             var productionCountries = new List<ProductionCountry>()
             {
-                new ProductionCountry{MovieId=1,CountryId=2}
+                // The Godfather
+                new ProductionCountry{MovieId=1,CountryId=2},
+
+                // Iron Man
+                new ProductionCountry{MovieId=2,CountryId=2},
             };
 
             var movieLanguages = new List<MovieLanguage>()
             {
+                // The Godfather
                 new MovieLanguage{MovieId=1,LanguageId=1,LanguageRoleId=1 },
                 new MovieLanguage{MovieId=1,LanguageId=2,LanguageRoleId=2 },
+
+                // Iron Man
+                new MovieLanguage{MovieId=2,LanguageId=1,LanguageRoleId=1 },
+                new MovieLanguage{MovieId=2,LanguageId=2,LanguageRoleId=2 },
+
             };
 
             var keywords = new List<Keyword>()
             {
+                // The Godfather
                 new Keyword{Name="The Godfather"},
                 new Keyword{Name="Godfather"},
                 new Keyword{Name="Michael Corleone"},
                 new Keyword{Name="Corleone"},
                 new Keyword{Name="Coppola"},
                 new Keyword{Name="Mario Puzo"},
+
+                // Iron Man
+                new Keyword{Name="Tony Stark"},
+                new Keyword{Name="Iron Man"},
+                new Keyword{Name="Malibu"},
+                new Keyword{Name="Pepper Pots"},
+                new Keyword{Name="War Machine"},
+                new Keyword{Name="Tony"},
+
             };
 
             var movieGenres = new List<MovieGenre>()
             {
+                // The Godfather
                 new MovieGenre{MovieId=1,GenreId=3},
+
+                // Iron Man
+                new MovieGenre{MovieId=2,GenreId=2},
+
             };
 
             var movieKeywords = new List<MovieKeywords>()
             {
+                // The Godfather
                 new MovieKeywords{MovieId=1,KeywordId=1},
                 new MovieKeywords{MovieId=1,KeywordId=2},
                 new MovieKeywords{MovieId=1,KeywordId=3},
                 new MovieKeywords{MovieId=1,KeywordId=4},
                 new MovieKeywords{MovieId=1,KeywordId=5},
                 new MovieKeywords{MovieId=1,KeywordId=6},
+
+                // Iron Man
+                new MovieKeywords{MovieId=2,KeywordId=7},
+                new MovieKeywords{MovieId=2,KeywordId=8},
+                new MovieKeywords{MovieId=2,KeywordId=9},
+                new MovieKeywords{MovieId=2,KeywordId=10},
+                new MovieKeywords{MovieId=2,KeywordId=11},
+                new MovieKeywords{MovieId=2,KeywordId=12},
             };
 
             if(await context.Movies.AnyAsync() == false)
