@@ -26,5 +26,21 @@ namespace movies.Controllers
 
             return Ok(movies);
         }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Json>> GetMovie(int id)
+        {
+            var movie = await _context.Movies.SingleOrDefaultAsync(x => x.Id == id);
+
+            var json = new Json() { Movie = movie };
+
+            return Ok(json);
+        }
     }
+
+    public class Json
+    {
+        public Movie Movie { get; set; }
+    }
+
 }

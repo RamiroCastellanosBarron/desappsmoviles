@@ -7,6 +7,12 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
 builder.Services.AddApplicationServices(builder.Configuration);
 builder.Services.AddCors();
+builder.Services.AddMvcCore(options =>
+{
+    options.RequireHttpsPermanent = true;
+    options.RespectBrowserAcceptHeader= true;
+})
+    .AddFormatterMappings();
 
 var app = builder.Build();
 
