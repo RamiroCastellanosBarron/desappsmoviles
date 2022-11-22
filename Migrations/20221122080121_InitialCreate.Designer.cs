@@ -11,7 +11,7 @@ using movies.Data;
 namespace movies.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20221122074847_InitialCreate")]
+    [Migration("20221122080121_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
