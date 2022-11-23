@@ -57,7 +57,7 @@ namespace movies.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertMovie(MovieDto movieDto)
+        public async Task<ActionResult<JsonObject>> InsertMovie(MovieDto movieDto)
         {
             var movie = new Movie()
             {
@@ -74,7 +74,12 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            JsonObject movieJson = new JsonObject()
+            {
+                Movie = movie
+            };
+
+            return Ok(movieJson);
         }
 
         [HttpPut("{id}")]
