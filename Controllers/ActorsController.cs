@@ -41,7 +41,7 @@ namespace movies.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteActor(int id)
+        public async Task<ActionResult<JsonActorResponse>> DeleteActor(int id)
         {
             var actor = await _context.Persons.SingleOrDefaultAsync(x => x.Id == id);
 
@@ -49,11 +49,16 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var result = new JsonActorResponse()
+            {
+                Response = "Actor of id " + id + " was deleted successfully",
+            };
+
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateActor(ActorDto actorDto, int id)
+        public async Task<ActionResult<JsonActorResponse>> UpdateActor(ActorDto actorDto, int id)
         {
             var actor = await _context.Persons.SingleOrDefaultAsync(x => x.Id == id);
 
@@ -62,11 +67,16 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var result = new JsonActorResponse()
+            {
+                Response = "Actor of name " + actorDto.Name + " was updated successfully",
+            };
+
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult> InsertActor(ActorDto actorDto)
+        public async Task<ActionResult<JsonActorResponse>> InsertActor(ActorDto actorDto)
         {
             var actor = new Person() { Name=actorDto.Name, PhotoUrl=actorDto.PhotoUrl };
 
@@ -74,14 +84,18 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var result = new JsonActorResponse()
+            {
+                Response = "Actor of name " + actorDto.Name + " was added successfully",
+            };
+
+            return Ok(result);
         }
     }
 
-    public class ActorsQuery
+    public class JsonActorResponse
     {
-        public Person Actor { get; set; }
-        public Gender Gender { get; set; }
+        public string Response { get; set; }
     }
 
     public class JsonArrayActors

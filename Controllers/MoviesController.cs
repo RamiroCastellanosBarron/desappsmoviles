@@ -5,6 +5,7 @@ using Microsoft.EntityFrameworkCore.Internal;
 using movies.Data;
 using movies.DTOs;
 using movies.Entities;
+using System.Security.Principal;
 
 namespace movies.Controllers
 {
@@ -44,7 +45,7 @@ namespace movies.Controllers
         }
 
         [HttpDelete("{id}")]
-        public async Task<ActionResult> DeleteMovie(int id)
+        public async Task<ActionResult<JsonMovieResponse>> DeleteMovie(int id)
         {
             var movie = await _context.Movies
                 .SingleOrDefaultAsync(x => x.Id == id);
@@ -53,11 +54,16 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var result = new JsonMovieResponse()
+            {
+                Response = "Movie of id " + id + " was deleted successfuly",
+            };
+
+            return Ok(result);
         }
 
         [HttpPost]
-        public async Task<ActionResult<JsonObject>> InsertMovie(MovieDto movieDto)
+        public async Task<ActionResult<JsonMovieResponse>> InsertMovie(MovieDto movieDto)
         {
             var movie = new Movie()
             {
@@ -74,16 +80,16 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            JsonObject movieJson = new JsonObject()
+            var result = new JsonMovieResponse()
             {
-                Movie = movie
+                Response = "Movie of title " + movieDto.Title + " was added successfully",
             };
 
-            return Ok(movieJson);
+            return Ok(result);
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult> UpdateMovie(MovieDto movieDto, int id)
+        public async Task<ActionResult<JsonMovieResponse>> UpdateMovie(MovieDto movieDto, int id)
         {
             var movie = await _context.Movies
                 .SingleOrDefaultAsync(x => x.Id == id);
@@ -98,8 +104,18 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            return Ok();
+            var result = new JsonMovieResponse()
+            {
+                Response = "Movie of title " + movieDto.Title + " was updated successfully",
+            };
+
+            return Ok(result);
         }
+    }
+
+    public class JsonMovieResponse
+    {
+        public string Response { get; set; }
     }
 
     public class JsonArray
