@@ -72,8 +72,8 @@ namespace movies.Controllers
                 ReleaseDate = movieDto.ReleaseDate,
                 Runtime = movieDto.Runtime,
                 Overview = movieDto.Overview,
-                Budget = movieDto.Budget,
                 Revenue = movieDto.Revenue,
+                VoteAverage = movieDto.VoteAverage,
             };
 
             await _context.Movies.AddAsync(movie);
@@ -99,8 +99,8 @@ namespace movies.Controllers
             movie.Runtime = movieDto.Runtime;
             movie.Overview = movieDto.Overview;
             movie.PhotoUrl = movieDto.PhotoUrl;
-            movie.Budget = movieDto.Budget;
             movie.Revenue = movieDto.Revenue;
+            movie.VoteAverage = movie.VoteAverage;
 
             await _context.SaveChangesAsync();
 
