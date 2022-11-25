@@ -21,31 +21,26 @@ namespace movies.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<JsonArray>> GetMovies()
+        public async Task<ActionResult<IEnumerable<Movie>>> GetMovies()
         {
             var movies = await _context.Movies
                 .ToListAsync();
 
-            var jsonArray = new JsonArray()
-            {
-                Movies = movies,
-            };
-
-            return Ok(jsonArray);
+            return Ok(movies);
         }
 
+        // GET
         [HttpGet("{id}")]
-        public async Task<ActionResult<JsonObject>> GetMovie(int id)
+        public async Task<ActionResult<Movie>> GetMovie(int id)
         {
             var movie = await _context.Movies.SingleOrDefaultAsync(x => x.Id == id);
 
-            var json = new JsonObject() { Movie = movie };
-
-            return Ok(json);
+            return Ok(movie);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<JsonMovieResponse>> DeleteMovie(int id)
+        // DELETE
+        [HttpGet("delete/{id}")]
+        public async Task<ActionResult<JsonResponse>> DeleteMovie(int id)
         {
             var movie = await _context.Movies
                 .SingleOrDefaultAsync(x => x.Id == id);
@@ -54,16 +49,12 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonMovieResponse()
-            {
-                Response = "Movie of id " + id + " was deleted successfuly",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResponse { Code = "OK"});
         }
 
-        [HttpPost]
-        public async Task<ActionResult<JsonMovieResponse>> InsertMovie(MovieDto movieDto)
+        // ADD
+        [HttpGet("insert")]
+        public async Task<ActionResult<JsonResponse>> InsertMovie([FromQuery]MovieDto movieDto)
         {
             var movie = new Movie()
             {
@@ -80,19 +71,15 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonMovieResponse()
-            {
-                Response = "Movie of title " + movieDto.Title + " was added successfully",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResponse { Code = "OK" });
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<JsonMovieResponse>> UpdateMovie(MovieDto movieDto, int id)
+        // UPDATE
+        [HttpGet("update")]
+        public async Task<ActionResult<JsonResponse>> UpdateMovie([FromQuery]MovieDto movieDto)
         {
             var movie = await _context.Movies
-                .SingleOrDefaultAsync(x => x.Id == id);
+                .SingleOrDefaultAsync(x => x.Id == movieDto.Id);
 
             movie.ReleaseDate = movieDto.ReleaseDate;
             movie.Title = movieDto.Title;
@@ -104,28 +91,13 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonMovieResponse()
-            {
-                Response = "Movie of title " + movieDto.Title + " was updated successfully",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResponse { Code = "OK" });
         }
     }
 
-    public class JsonMovieResponse
+    public class JsonResponse
     {
-        public string Response { get; set; }
-    }
-
-    public class JsonArray
-    {
-        public IEnumerable<Movie> Movies { get; set; }
-    }
-
-    public class JsonObject
-    {
-        public Movie Movie { get; set; }
+        public string Code { get; set; }
     }
 
 }

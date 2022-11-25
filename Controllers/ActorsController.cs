@@ -19,29 +19,25 @@ namespace movies.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<JsonArrayActors>>> GetActors()
+        public async Task<ActionResult<IEnumerable<Person>>> GetActors()
         {
             var actors = await _context.Persons
                 .ToListAsync();
 
-            var jsonArray = new JsonArrayActors() { Actors = actors };
-
-            return Ok(jsonArray);
+            return Ok(actors);
         }
 
         [HttpGet("{id}")]
-        public async Task<ActionResult<JsonObjectActor>> GetActor(int id)
+        public async Task<ActionResult<Person>> GetActor(int id)
         {
             var actor = await _context.Persons
                 .SingleOrDefaultAsync(x => x.Id == id);
 
-            var jsonObject = new JsonObjectActor() { Actor= actor };
-
-            return Ok(jsonObject);
+            return Ok(actor);
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<JsonActorResponse>> DeleteActor(int id)
+        [HttpGet("delete/{id}")]
+        public async Task<ActionResult<JsonResp>> DeleteActor(int id)
         {
             var actor = await _context.Persons.SingleOrDefaultAsync(x => x.Id == id);
 
@@ -49,34 +45,24 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonActorResponse()
-            {
-                Response = "Actor of id " + id + " was deleted successfully",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResp { Code = "OK"});
         }
 
-        [HttpPut("{id}")]
-        public async Task<ActionResult<JsonActorResponse>> UpdateActor(ActorDto actorDto, int id)
+        [HttpGet("update")]
+        public async Task<ActionResult<JsonResp>> UpdateActor([FromQuery]ActorDto actorDto)
         {
-            var actor = await _context.Persons.SingleOrDefaultAsync(x => x.Id == id);
+            var actor = await _context.Persons.SingleOrDefaultAsync(x => x.Id == actorDto.Id);
 
             actor.Name = actorDto.Name;
             actor.PhotoUrl= actorDto.PhotoUrl;
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonActorResponse()
-            {
-                Response = "Actor of name " + actorDto.Name + " was updated successfully",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResp { Code = "OK"});
         }
 
-        [HttpPost]
-        public async Task<ActionResult<JsonActorResponse>> InsertActor(ActorDto actorDto)
+        [HttpGet("insert")]
+        public async Task<ActionResult<JsonResp>> InsertActor([FromQuery]ActorDto actorDto)
         {
             var actor = new Person() { Name=actorDto.Name, PhotoUrl=actorDto.PhotoUrl };
 
@@ -84,27 +70,12 @@ namespace movies.Controllers
 
             await _context.SaveChangesAsync();
 
-            var result = new JsonActorResponse()
-            {
-                Response = "Actor of name " + actorDto.Name + " was added successfully",
-            };
-
-            return Ok(result);
+            return Ok(new JsonResp { Code ="OK"});
         }
     }
 
-    public class JsonActorResponse
+    public class JsonResp
     {
-        public string Response { get; set; }
-    }
-
-    public class JsonArrayActors
-    {
-        public IEnumerable<Person> Actors { get; set; }
-    }
-
-    public class JsonObjectActor
-    {
-        public Person Actor { get; set; }
+        public string Code { get; set; }
     }
 }
